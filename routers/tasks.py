@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Query, Response
 from typing import List, Dict, Any
 from datetime import datetime
 from schemas import TaskBase, TaskCreate, TaskUpdate, TaskResponse
-from database import tasks_db
+from database_copy import tasks_db
 
 
 router = APIRouter(
@@ -11,10 +11,6 @@ router = APIRouter(
     responses={404: {"description": "Task not found"}},
 )
 
-q1 = "Q1"
-q2 = "Q2"
-q3 = "Q3"
-q4 = "Q4"
 
 @router.get("/quadrant/{quadrant}")
 async def get_tasks_by_quadrant(quadrant: str) -> dict:

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Query, Response
 from typing import List, Dict, Any
 from datetime import datetime
-from database import tasks_db
+from database_copy import tasks_db
 
 router = APIRouter(
     prefix="/stats",
@@ -15,6 +15,12 @@ async def get_all_tasks() -> dict:
         "count": len(tasks_db), # считает количество записей в хранилище
         "tasks": tasks_db # выводит всё, чта есть в хранилище
     }
+
+
+q1 = "Q1"
+q2 = "Q2"
+q3 = "Q3"
+q4 = "Q4"
 
 @router.get("/stats")
 async def get_tasks_stats() -> dict:
