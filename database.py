@@ -15,7 +15,9 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_async_engine(
     DATABASE_URL,
-    connect_args={"statement_cache_size": 0}
+    connect_args={"statement_cache_size": 0},
+    echo=True,  # Добавляем для отладки SQL запросов
+    pool_pre_ping=True  # Проверяет соединение перед использованием    
 )
 
 AsyncSessionLocal = async_sessionmaker(
